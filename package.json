@@ -4,7 +4,6 @@
   "description": "building react app from scratch",
   "license": "ISC",
   "author": "Suvam Sen",
-  "main": "App.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

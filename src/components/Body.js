@@ -1,25 +1,32 @@
-import ResturantCard from "./RestaurantCard";
+import ResturantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { RES_API } from "../utils/constant";
 
 // not using keys (not acceptable in react)  <<<<<<<< index as key  <<<<<<<<<< unique Id (best practice)
+//whenever state variable update, react trigers a reconciliation cycle(re-rendering the component)
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredResList, setFilteredResList] = useState([]);
-  //whenever state variable update, react trigers a reconciliation cycle(re-rendering the component)
+
+  const RestaurantCardWithPromotedLabel = withPromotedLabel(ResturantCard);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const responce = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const responce = await fetch(RES_API);
     const data = await responce.json();
-    setListOfRestaurants(data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredResList(data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    console.log( "Res State Data", listOfRestaurants);
+    setListOfRestaurants(
+      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredResList(
+      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    console.log("Res State Data", listOfRestaurants);
   };
 
   if (listOfRestaurants.length === 0) {
@@ -57,7 +64,9 @@ const Body = () => {
               );
               setFilteredResList(finalList);
             }}
-          >Search</button>
+          >
+            Search
+          </button>
         </div>
       </div>
       <div className="res-container">
@@ -65,6 +74,22 @@ const Body = () => {
           <Link key={res.info.id} to={`/restaurants/${res.info.id}`}>  <ResturantCard resData={res} />   </Link>
         ))}
       </div>
+
+      {/* Higher order function example */}
+      {/* <div className="res-container">
+        {filteredResList.map((res) => (
+          <Link
+            key={res.info.id}
+            to={`/restaurants/${res.info.id}`}>
+              {res.info.promoted ? (
+                <RestaurantCardWithPromotedLabel resData={res} />
+              ) : (
+                <ResturantCard resData={res} />
+              )
+              }
+          </Link>
+        ))}
+      </div> */}
     </div>
   );
 };

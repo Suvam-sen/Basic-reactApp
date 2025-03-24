@@ -11,17 +11,15 @@ const Header = () => {
         <img className="logo" src={LOGO_URL} alt="" />
       </div>
       <div className="nav-items">
-        <ul>
-          <li>
-            Status: {onlineStatus ? "🟢" : "🔴"}
-          </li>
+        <ul className="">
+          <li>Status: {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li className="text-green" >
+          <li className="text-green">
             <Link to="/contact">Contact</Link>
           </li>
           <li>

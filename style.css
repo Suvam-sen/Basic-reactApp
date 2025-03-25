@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-* {
+/* * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
+} */
 
 a{
   text-decoration: none;
@@ -341,131 +341,4 @@ a{
 
 .cart-page-button:hover {
   background-color: #e68900;
-}
-
-
-
-/* Full restaurant menu container */
-.restaurant-menu {
-  width: 50%;
-  margin: 20px auto;
-  padding: 20px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  background-color: #121212;
-  color: white;
-}
-
-/* Header styles */
-.res-header {
-  text-align: center;
-  padding: 15px;
-  border: 2px solid white;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.res-header_title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.res-header_cuisine {
-  font-size: 1rem;
-  color: #bbb;
-  margin-top: 5px;
-}
-
-.res-header_rating {
-  font-size: 1rem;
-  color: #facc15;
-  margin-top: 5px;
-}
-
-/* UL wrapper */
-.res-menu-list {
-  width: 90%;
-  margin: 0 auto;
-  padding: 15px;
-  border: 2px solid white;
-  border-radius: 10px;
-}
-
-/* 🔴 DO NOT CHANGE: UL/LI styles from previous design */
-.res-menu-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 15px;
-  border-bottom: 1px solid #e2e2e2;
-  background: white;
-}
-
-.res-menu-left {
-  flex-grow: 1;
-}
-
-.res-menu-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #3e4152;
-  margin-bottom: 5px;
-}
-
-.res-menu-price {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #3e4152;
-  margin-bottom: 5px;
-}
-
-.res-menu-discount {
-  color: #2c8a25;
-  font-size: 0.9rem;
-  margin-left: 10px;
-}
-
-.res-menu-rating {
-  font-size: 0.9rem;
-  color: #2c8a25;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.res-menu-description {
-  font-size: 0.9rem;
-  color: #686b78;
-  margin-bottom: 5px;
-}
-
-.res-menu-right {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.res-menu-image {
-  width: 90px;
-  height: 90px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 5px;
-}
-
-.res-menu-add-btn {
-  background-color: #60b246;
-  color: white;
-  border: none;
-  padding: 5px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 0.9rem;
-}
-
-.res-menu-custom {
-  font-size: 0.8rem;
-  color: gray;
-  margin-top: 2px;
 }

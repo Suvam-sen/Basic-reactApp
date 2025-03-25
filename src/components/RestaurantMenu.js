@@ -2,6 +2,7 @@ import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils/constant";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 
 const RestaurantMenu = () => {
@@ -10,54 +11,26 @@ const RestaurantMenu = () => {
 
   if (restaurantInfo === null) return <Shimmer />;
 
-  const { name, cuisines, avgRatingString } =
-    restaurantInfo?.cards[2]?.card?.card?.info;
+  const { name, cuisines, avgRatingString } =restaurantInfo?.cards[2]?.card?.card?.info;
 
-  const { itemCards } =
-    restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card
-      ?.card;
-  console.log(itemCards);
+  // const { itemCards } = restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card;
+
+  const categories = restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter( (c) => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+
+  // console.log(categories);
 
   return (
-    <div className="restaurant-menu">
-      <div className="res-header">
-        <h1 className="res-header_title">{name}</h1>
-        <p className="res-header_cuisine">{cuisines.join(", ")}</p>
-        <p className="res-header_rating">⭐ {avgRatingString}</p>
+    <div>
+      <div className="text-center">
+        <h1 className="font-2xl my-6 text-2xl">{name}</h1>
+        <p className="text-base text-[#bbb] mt-1.5">{cuisines.join(", ")}</p>
+        <p className="text-base text-[#facc15] mt-1.5">⭐ {avgRatingString}</p>
       </div>
 
-      <ul className="res-menu-list">
-        {itemCards.map((item) => (
-          <li key={item.card?.info?.id} className="res-menu-item">
-            <div className="res-menu-left">
-              <h3 className="res-menu-title">{item.card?.info?.name}</h3>
-              <p className="res-menu-price">
-                ₹{item.card?.info?.price / 100 || item.card?.info?.defaultPrice / 100}
-                <span className="res-menu-discount">
-                  {item.card?.info?.offerTags?.[0]?.title || ""}
-                </span>
-              </p>
-              <p className="res-menu-rating">
-                {item.card?.info?.ratings?.aggregatedRating?.rating
-                  ? `⭐ ${item.card?.info?.ratings?.aggregatedRating?.rating} (${item.card?.info?.ratings?.aggregatedRating?.ratingCountV2})`
-                  : "Not rated"}
-              </p>
-              <p className="res-menu-description">
-                {item.card?.info?.description}
-              </p>
-            </div>
-            <div className="res-menu-right">
-              <img
-                src={`${CDN_URL}/${item.card?.info?.imageId}`}
-                alt={item.card?.info?.name}
-                className="res-menu-image"
-              />
-              <button className="res-menu-add-btn">ADD</button>
-              <p className="res-menu-custom">Customisable</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {categories.map( (category) => (
+        <RestaurantCategory key={category?.card?.card?.title}
+         data={category?.card?.card}  />
+      ))}
     </div>
   );
 };

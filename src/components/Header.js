@@ -1,10 +1,12 @@
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
-
+  const {loggedInUser} = useContext(UserContext);
   return (
     <div className="header">
       <div className="logo-container">
@@ -25,6 +27,7 @@ const Header = () => {
           <li>
             <Link to="/cart">Cart</Link>
           </li>
+          <li className="font-bold" >{loggedInUser}</li>
         </ul>
       </div>
     </div>

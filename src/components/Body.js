@@ -1,8 +1,9 @@
 import ResturantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RES_API } from "../utils/constant";
+import UserContext from "../utils/UserContext";
 
 // not using keys (not acceptable in react)  <<<<<<<< index as key  <<<<<<<<<< unique Id (best practice)
 //whenever state variable update, react trigers a reconciliation cycle(re-rendering the component)
@@ -10,6 +11,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredResList, setFilteredResList] = useState([]);
+
+  // const { loggedInUser, setUserName } = useContext(UserContext);
 
   // const RestaurantCardWithPromotedLabel = withPromotedLabel(ResturantCard);
 
@@ -68,10 +71,26 @@ const Body = () => {
             Search
           </button>
         </div>
+        {/* <div>
+          <label>Username: </label>
+          <input
+            type="text"
+            placeholder="Search"
+            className="border border-black p-1 m-1"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value)
+            }}
+          />
+        </div> */}
       </div>
+
       <div className="res-container">
         {filteredResList.map((res) => (
-          <Link key={res.info.id} to={`/restaurants/${res.info.id}`}>  <ResturantCard resData={res} />   </Link>
+          <Link key={res.info.id} to={`/restaurants/${res.info.id}`}>
+            {" "}
+            <ResturantCard resData={res} />{" "}
+          </Link>
         ))}
       </div>
 

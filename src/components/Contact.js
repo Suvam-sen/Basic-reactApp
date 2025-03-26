@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Contact = () => {
+  const {loggedInUser} = useContext(UserContext)
   return (
     <div className="contact-page-container">
       <h1 className="contact-page-heading">Contact Us</h1>
+      <h2 className="font-bold text-2xl text-gray-500 text-center m-4 p-4">LoggedInUser: {loggedInUser} </h2>
       <p className="contact-page-description">
         Have any questions? We'd love to hear from you!
       </p>

@@ -24,3 +24,4 @@
 (Normal JS utility function)
 - useState() 
 - useEffect()
+- useContext()

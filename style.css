@@ -30,7 +30,7 @@ a{
 
 .nav-items > ul {
   display: flex;
-  width: 500px;
+  /* width: 500px; */
   justify-content: space-around;
 }
 
@@ -303,42 +303,4 @@ a{
 
 .contact-page-button:hover {
   background-color: #0056b3;
-}
-
-
-/* Cart Page Styles */
-.cart-page-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.cart-page-title {
-  color: #4caf50;
-  font-size: 2rem;
-}
-
-.cart-page-message {
-  font-size: 1.2rem;
-  color: #555;
-  margin: 10px 0;
-}
-
-.cart-page-button {
-  background-color: #ff9800;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.cart-page-button:hover {
-  background-color: #e68900;
 }

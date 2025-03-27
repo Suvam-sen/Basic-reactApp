@@ -8,6 +8,8 @@ import Cart from "./components/Cart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -24,12 +26,14 @@ const AppLayout = () => {
   }, []);
 
   return (
+    <Provider store={appStore} >
     <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <div className="app">
         <Header />
         <Outlet />
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 

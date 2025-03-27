@@ -4,6 +4,7 @@
   "description": "building react app from scratch",
   "license": "ISC",
   "author": "Suvam Sen",
+  "type": "module",
   "scripts": {
     "start": "parcel index.html"
   },
@@ -12,9 +13,11 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/postcss": "^4.0.15",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.22.0",
     "tailwindcss": "^4.0.15"
   }
